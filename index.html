@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<link rel="icon" type="image/png" href="icone.png">
+
+<html lang="pt-BR">
+
+<head>
+  
+  <link rel="manifest" href="manifest.json">
+  
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MANILHA POKER TRAINER</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+
+<audio id="correct-sound" src="sounds/correct.mp3"></audio>
+<audio id="wrong-sound" src="sounds/wrong.mp3"></audio>
+
+
+
+
+<!-- MENU -->
+
+<button id="menu-button">
+☰
+</button>
+
+
+<div id="overlay"></div>
+
+
+
+<div id="side-menu">
+
+
+<h2>
+♠ MENU
+</h2>
+
+
+
+<button id="open-my-ranges">
+MEUS RANGES
+</button>
+
+
+
+<button id="open-training-range">
+RANGE DE TREINO
+</button>
+
+
+
+<button id="open-positions">
+TREINAR POSIÇÕES
+</button>
+
+
+
+<button id="open-statistics">
+ESTATÍSTICAS
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- TELA INICIAL -->
+
+<div id="start-screen">
+
+
+<div class="curtain left"></div>
+
+<div class="curtain right"></div>
+
+
+
+<div class="logo">
+
+
+<div class="spade">
+♠
+</div>
+
+
+
+<h1>
+MANILHA<br>
+POKER TRAINER
+</h1>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- TREINO -->
+
+<div id="training-screen">
+
+
+
+<div id="scoreboard">
+
+
+<span>
+🎯 <b id="hands">0</b>
+</span>
+
+
+<span>
+✅ <b id="correct">0</b>
+</span>
+
+
+<span>
+❌ <b id="wrong">0</b>
+</span>
+
+
+<span id="accuracy">
+0%
+</span>
+
+
+</div>
+
+
+
+
+
+<div id="table">
+
+
+
+<div class="seat" id="EP">
+EP
+<span>100 BB</span>
+</div>
+
+
+<div class="seat" id="MP">
+MP
+<span>100 BB</span>
+</div>
+
+
+<div class="seat" id="CO">
+CO
+<span>100 BB</span>
+</div>
+
+
+<div class="seat" id="BTN">
+BTN
+<span>100 BB</span>
+</div>
+
+
+<div class="seat" id="SB">
+SB
+<span>99.5 BB</span>
+</div>
+
+
+<div class="seat" id="BB">
+BB
+<span>99 BB</span>
+</div>
+
+
+
+<div id="pot">
+
+POTE
+
+<br>
+
+1.5 BB
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div id="cards" class="waiting">
+
+
+<div class="card">
+
+<div class="card-inner">
+
+
+<div class="card-front spades">
+
+<div class="suit top"></div>
+
+<div class="rank"></div>
+
+<div class="suit bottom"></div>
+
+</div>
+
+
+<div class="card-back"></div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<div class="card-inner">
+
+
+<div class="card-front spades">
+
+<div class="suit top"></div>
+
+<div class="rank"></div>
+
+<div class="suit bottom"></div>
+
+</div>
+
+
+<div class="card-back"></div>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<div id="result"></div>
+
+
+
+
+
+<div id="actions">
+  
+  <button id="start-hand">
+    INICIAR MÃO
+  </button>
+  
+  
+  <button id="raise" class="hide">
+    RAISE
+  </button>
+  
+  
+  <button id="fold" class="hide">
+    FOLD
+  </button>
+  
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- MEUS RANGES -->
+
+<div id="my-ranges-screen">
+
+
+<h1>
+♠ MEUS RANGES
+</h1>
+
+
+
+<div id="range-positions">
+
+
+<button class="range-btn active" data-position="EP">
+EP
+</button>
+
+
+<button class="range-btn" data-position="MP">
+MP
+</button>
+
+
+<button class="range-btn" data-position="CO">
+CO
+</button>
+
+
+<button class="range-btn" data-position="BTN">
+BTN
+</button>
+
+
+<button class="range-btn" data-position="SB">
+SB
+</button>
+
+
+</div>
+
+
+
+
+<div id="matrix"></div>
+
+
+
+<button id="back-my-ranges">
+
+← VOLTAR
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- RANGE DE TREINO -->
+
+<div id="training-range-screen">
+
+
+<h1>
+🎯 RANGE DE TREINO
+</h1>
+
+
+
+<p>
+Escolha quais mãos podem aparecer nas perguntas
+</p>
+
+
+
+
+<div id="training-range-actions">
+
+
+<button id="select-all-training">
+
+TODOS
+
+</button>
+
+
+
+<button id="clear-training">
+
+NENHUM
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+<div id="training-matrix"></div>
+
+
+
+
+
+<button id="back-training-range">
+
+← VOLTAR
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- POSIÇÕES -->
+
+<div id="positions-screen">
+
+
+<h1>
+🪑 TREINAR POSIÇÕES
+</h1>
+
+
+
+<div class="panel">
+
+
+
+<label>
+
+<input type="checkbox" value="EP">
+
+EP
+
+</label>
+
+
+
+
+<label>
+
+<input type="checkbox" value="MP">
+
+MP
+
+</label>
+
+
+
+
+<label>
+
+<input type="checkbox" value="CO">
+
+CO
+
+</label>
+
+
+
+
+<label>
+
+<input type="checkbox" value="BTN">
+
+BTN
+
+</label>
+
+
+
+
+<label>
+
+<input type="checkbox" value="SB">
+
+SB
+
+</label>
+
+
+
+
+</div>
+
+
+
+
+
+<button id="back-positions">
+
+← VOLTAR
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ESTATÍSTICAS -->
+
+
+<div id="statistics-screen">
+
+
+<h1>
+📊 ESTATÍSTICAS
+</h1>
+
+
+
+<div id="stats-content">
+
+</div>
+
+
+
+
+<button id="back-statistics">
+
+← VOLTAR
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+
+</html>
